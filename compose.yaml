@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  ansible:
+    build: 
+      context: ./docker
+      dockerfile: ./Dockerfile.ansible
+    tty: true
+  
+  node-1:
+    build:
+      context: ./docker
+      dockerfile: ./Dockerfile.test
+    ports:
+      - "2222:22"
+    tty: true
+
+  node-2:
+    build:
+      context: ./docker
+      dockerfile: ./Dockerfile.test
+    ports:
+      - "2223:22"
+    tty: true
