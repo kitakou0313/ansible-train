@@ -1,0 +1,21 @@
+group1:
+  hosts:
+    mn1:
+      ansible_host: node-1
+    mn2:
+      ansible_host: node-2
+
+group2:
+  hosts:
+    mn2:
+      ansible_host: node-2
+      # ansible内で用いられる変数を渡すこともできる
+  vars:
+    ansible_user: root
+
+
+# Meta group
+all_hosts:
+  children:
+    group1:
+    group2:
