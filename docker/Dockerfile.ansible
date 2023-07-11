@@ -4,5 +4,11 @@ WORKDIR /workdir
 
 RUN apt-get update
 RUN apt-get install -y python3 python3-pip
+ENV LANG=C.UTF-8
 RUN python3 -m pip install --user ansible
+COPY hosts /etc/ansible/hosts
 ENV PATH $PATH:/root/.local/bin
+
+RUN apt-get install -y openssh-server
+COPY ./credentials/id_rsa /root/.ssh/
+RUN chmod 700 /root/.ssh
