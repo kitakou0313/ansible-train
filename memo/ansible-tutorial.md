@@ -72,5 +72,14 @@ mn2                        : ok=3    changed=0    unreachable=0    failed=0    s
 
 ```
 - TASK [Gathering Facts] 
-    - 暗黙的に実行されるTask
+    - 各Playの先頭で暗黙的に実行されるTask
     - playbookで使用されるinventoryを検査
+
+
+
+## Playbookの詳細
+- Playの実行順
+    - 上から順
+    - ホストごとに並列でTaskを実行する
+- Play内のTaskの実行順
+    - 上から順
