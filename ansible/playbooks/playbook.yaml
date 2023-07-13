@@ -6,3 +6,10 @@
     - name: Print Message
       ansible.builtin.debug:
         msg: "Hello!"
+
+- name: My second play
+  hosts: all_hosts
+  tasks:
+    - name: Pring Message
+      ansible.builtin.debug:
+        msg: "Hello in second play!"
