@@ -1,9 +1,6 @@
 group1:
   hosts:
-    mn1:
-      ansible_host: node-1
-    mn2:
-      ansible_host: node-2
+    node-[1:2]
 
 group2:
   hosts:
