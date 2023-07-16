@@ -74,6 +74,13 @@ mn2                        : ok=3    changed=0    unreachable=0    failed=0    s
 - TASK [Gathering Facts] 
     - 各Playの先頭で暗黙的に実行されるTask
     - playbookで使用されるinventoryを検査
+- PLAY RECAPの各ステータス
+    - ok
+        - 正常終了
+    - changed
+        - ホストに何か変化があったとき
+            - ファイルの変更，Permissionの変更など
+        - 冪等性の担保に良さそう
 
 
 
@@ -83,3 +90,12 @@ mn2                        : ok=3    changed=0    unreachable=0    failed=0    s
     - ホストごとに並列でTaskを実行する
 - Play内のTaskの実行順
     - 上から順
+- variable
+    - groupにもhost毎にも設定できる
+    - 前者ならgroup内のホスト全てに，後者ならhost毎に適用される
+
+## Playbookでできること
+### templating
+- [Templating ](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_templating.html#templating-jinja2)
+- Jinja2を使用して動的な制御とデプロイ先の各種データの表示が可能
+- ホストごとにIPアドレス，hostnameの表示などができる
