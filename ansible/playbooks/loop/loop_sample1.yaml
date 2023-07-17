@@ -1,0 +1,19 @@
+- name: Add some users
+  hosts: all_hosts
+  tasks:
+  - name: Add some users
+    ansible.builtin.user:
+      name: "{{ item }}"
+      state: present
+      groups:
+        - "root"
+    loop:
+      - testuser1
+      - testuser2
+  - name: Print user list
+    ansible.builtin.shell: cat /etc/passwd
+    register: execution_result
+
+  - name: Check command result
+    ansible.builtin.debug:
+      var: execution_result
