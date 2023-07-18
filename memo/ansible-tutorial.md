@@ -99,3 +99,13 @@ mn2                        : ok=3    changed=0    unreachable=0    failed=0    s
 - [Templating ](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_templating.html#templating-jinja2)
 - Jinja2を使用して動的な制御とデプロイ先の各種データの表示が可能
 - ホストごとにIPアドレス，hostnameの表示などができる
+
+### Filters
+- 様々なデータの加工ができる
+- 実行環境に注意
+    - MN上では無くAnsible controller上で実行される
+
+### Loop
+- Moduleによってはlist内の変数をループできる
+- yamlのハッシュを渡して参照することも可
+    - Pythonの辞書では無いので文法に注意
