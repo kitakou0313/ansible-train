@@ -1,0 +1,16 @@
+- name: Register loop output as a variable
+  hosts: all_hosts
+  tasks:
+  - name: Register loop output as a variable
+    ansible.builtin.shell:
+      "echo {{item}}"
+    loop:
+      - "one"
+      - "two"
+    register: echo
+# register変数にresults fiealdがあり，内部にlistとして各loopの結果が格納される
+  - name: Check command result
+    ansible.builtin.debug:
+      var: echo
+    when: item.rc != 0
+    loop: "{{ echo.results  }}"
