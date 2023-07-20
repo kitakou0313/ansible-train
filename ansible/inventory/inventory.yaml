@@ -15,4 +15,3 @@ group2:
 all_hosts:
   children:
     group1:
-    group2:
