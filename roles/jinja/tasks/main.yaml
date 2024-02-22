@@ -2,5 +2,5 @@
 - name: Place test file
   ansible.builtin.template:
     src: test.j2
-    dest: /tmp
+    dest: /tmp/test.txt
     mode: '0666'
