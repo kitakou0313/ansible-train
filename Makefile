@@ -1,6 +1,6 @@
 .PHONY: up
 up:
-	docker compose up -d
+	docker compose up -d node-1 node-2
 
 .PHONY: down
 down:
