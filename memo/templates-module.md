@@ -106,6 +106,7 @@ moduleで設定するパーミッションを`644`に変更
 
 ```
 
+Playbookを実行 `changed`と判定されている
 ```
 root@8b90b773d6a5:/workdir# ansible-playbook -i hosts playbook.yaml 
 
@@ -130,7 +131,7 @@ node-2                     : ok=3    changed=1    unreachable=0    failed=0    s
 root@8b90b773d6a5:/workdir# 
 ```
 
-パーミッションも変化しているが，内容は変化していない　よってパーミッションの変化のみでもchangedとなる
+パーミッションも変化しているが，内容は変化していない　よってパーミッションの変化のみでも`changed`となる
 ```
 root@9c1f1942b1a8:~# ls -la /tmp/
 total 12
