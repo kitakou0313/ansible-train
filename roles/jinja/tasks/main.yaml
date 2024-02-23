@@ -3,4 +3,4 @@
   ansible.builtin.template:
     src: test.j2
     dest: /tmp/test.txt
-    mode: '0666'
+    mode: '0644'
