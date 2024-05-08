@@ -6,3 +6,8 @@
   roles:
     - ping
     - jinja
+
+- name: Ping only group1 hosts
+  hosts: all #play毎に実行するNodeの選択にpatternを適用可能 
+  roles:
+    - { role: ping, when: "'group1' in group_names" }
