@@ -109,3 +109,61 @@ mn2                        : ok=3    changed=0    unreachable=0    failed=0    s
 - Moduleによってはlist内の変数をループできる
 - yamlのハッシュを渡して参照することも可
     - Pythonの辞書では無いので文法に注意
+
+### check mode
+- `--check`引数で`--dry-run`に近いことができる
+    - 実際にはManaged Nodeには変更を加えない
+- Managed Nodeのvarsなどによる挙動の違いは確認できる
+
+```
+# ansible-playbook -i hosts playbook.yaml --check
+
+PLAY [Ping all hosts] *********************************************************************************
+
+TASK [Gathering Facts] ********************************************************************************
+ok: [node-1]
+ok: [node-2]
+
+TASK [ping : Ping all Managed nodes] ******************************************************************
+ok: [node-1]
+ok: [node-2]
+
+TASK [ping : Debug] ***********************************************************************************
+ok: [node-1] => {
+    "group_names": [
+        "group1"
+    ]
+}
+ok: [node-2] => {
+    "group_names": [
+        "group2"
+    ]
+}
+
+TASK [jinja : Place test file] ************************************************************************
+ok: [node-1]
+ok: [node-2]
+
+PLAY [Ping only group1 hosts] *************************************************************************
+
+TASK [Gathering Facts] ********************************************************************************
+ok: [node-1]
+ok: [node-2]
+
+TASK [ping : Ping all Managed nodes] ******************************************************************
+skipping: [node-2]
+ok: [node-1]
+
+TASK [ping : Debug] ***********************************************************************************
+ok: [node-1] => {
+    "group_names": [
+        "group1"
+    ]
+}
+skipping: [node-2]
+
+PLAY RECAP ********************************************************************************************
+node-1                     : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+node-2                     : ok=5    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+
+```
