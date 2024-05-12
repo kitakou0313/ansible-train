@@ -1,6 +1,3 @@
-- name: Ping all Managed nodes
-  ansible.builtin.ping:
-
 - name: Debug
   ansible.builtin.debug:
     var: group_names
