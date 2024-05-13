@@ -4,3 +4,12 @@
     src: test.j2
     dest: /tmp/test.txt
     mode: '0644'
+
+- name: Output file content using cat command
+  become: true
+  command: cat /tmp/test.txt
+  register: file_content
+
+- name: Debug
+  ansible.builtin.debug:
+    msg: "{{ file_content.stdout }}"
