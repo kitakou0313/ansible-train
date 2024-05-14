@@ -13,3 +13,8 @@
 - name: Debug
   ansible.builtin.debug:
     msg: "{{ file_content.stdout }}"
+
+- name: Delete file
+  file:
+    path: /tmp/test.txt
+    state: absent
