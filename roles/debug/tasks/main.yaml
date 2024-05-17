@@ -1,0 +1,7 @@
+- name: Print ansible_local
+  ansible.builtin.debug:
+    msg: "{{ ansible_local }}"
+
+- name: Print ansible_facts
+  ansible.builtin.debug:
+    msg: "{{ ansible_facts }}"
