@@ -6,6 +6,7 @@
   roles:
     - ping
     - jinja
+    - debug
 
 - name: Ping only group1 hosts
   hosts: all #play毎に実行するNodeの選択にpatternを適用可能 
