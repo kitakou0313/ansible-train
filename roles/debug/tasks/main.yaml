@@ -9,3 +9,8 @@
 - name: Print groups
   ansible.builtin.debug:
     msg: "{{ groups }}"
+
+# 対象の全Host
+- name: Print ansible_play_hosts_all
+  ansible.builtin.debug:
+    msg: "{{ ansible_play_hosts_all }}"
