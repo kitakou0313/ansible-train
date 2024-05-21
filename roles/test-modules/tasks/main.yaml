@@ -1,0 +1,4 @@
+# that paramで与えたexpressionをassertionする
+- name: Assert module
+  ansible.builtin.assert:
+    that: "'group1' in group_names"
