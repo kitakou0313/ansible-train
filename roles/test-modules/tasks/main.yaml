@@ -15,3 +15,15 @@
     timeout: 300
     port: 22
     host: 127.0.0.1
+
+# ファイルを指定された条件で検索
+- name: Search files in /tmp dir older than 2 days
+  ansible.builtin.find:
+    paths: /tmp
+    age: 2d
+    recurse: yes
+  register: res_of_file_search
+
+- name: Print
+  ansible.builtin.debug:
+    msg: "{{ res_of_file_search }}"
