@@ -27,3 +27,8 @@
 - name: Print
   ansible.builtin.debug:
     msg: "{{ res_of_file_search }}"
+
+# Scriptを実行するmodule
+- name: Run a script with arguments
+  ansible.builtin.script:
+    cmd: roles/test-modules/files/scripts.sh
