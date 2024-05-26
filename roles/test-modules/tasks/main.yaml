@@ -32,3 +32,11 @@
 - name: Run a script with arguments
   ansible.builtin.script:
     cmd: roles/test-modules/files/scripts.sh
+
+# HTTP request
+- name: Check that a page returns successfully
+  ansible.builtin.uri:
+    url: https://www.example.com
+    return_content: true
+  register: this
+
