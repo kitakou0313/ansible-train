@@ -38,5 +38,6 @@
   ansible.builtin.uri:
     url: https://www.example.com
     return_content: true
+    validate_certs: true # 証明書の検証を実行
   register: this
 
