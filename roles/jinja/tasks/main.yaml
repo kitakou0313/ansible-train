@@ -9,12 +9,13 @@
   become: true
   command: cat /tmp/test.txt
   register: file_content
+  changed_when: false
 
 - name: Debug
   ansible.builtin.debug:
     msg: "{{ file_content.stdout }}"
 
-- name: Delete file
-  file:
-    path: /tmp/test.txt
-    state: absent
+# - name: Delete file
+#   file:
+#     path: /tmp/test.txt
+#     state: absent

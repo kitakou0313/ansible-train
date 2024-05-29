@@ -1,43 +1,6 @@
-# that paramで与えたexpressionをassertionする
-- name: Assert module
-  ansible.builtin.assert:
-    that: "'group1' in group_names"
-
-# 接続できるか検証
-- name: Wait 
-  ansible.builtin.wait_for_connection:
-    delay: 1
-    timeout: 10
-
-# ポートを指定して検証
-- name: wait for port
-  ansible.builtin.wait_for:
-    timeout: 300
-    port: 22
-    host: 127.0.0.1
-
-# ファイルを指定された条件で検索
-- name: Search files in /tmp dir older than 2 days
-  ansible.builtin.find:
-    paths: /tmp
-    age: 2d
-    recurse: yes
-  register: res_of_file_search
-
-- name: Print
-  ansible.builtin.debug:
-    msg: "{{ res_of_file_search }}"
-
-# Scriptを実行するmodule
-- name: Run a script with arguments
-  ansible.builtin.script:
-    cmd: roles/test-modules/files/scripts.sh
-
-# HTTP request
-- name: Check that a page returns successfully
-  ansible.builtin.uri:
-    url: https://www.example.com
-    return_content: true
-    validate_certs: true # 証明書の検証を実行
-  register: this
-
+- name: Include vars from
+  ansible.builtin.include_vars:
+    dir: vars/all
+    extensions:
+      - 'json'
+      - 'jsn'
