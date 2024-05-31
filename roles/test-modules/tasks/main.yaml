@@ -1,14 +1,18 @@
-- name: Check differences between two files
-  command: diff /tmp/test.txt /tmp/test.txt
-  register: diff_result
-  ignore_errors: true
+- block:
+  - name: Check differences between two files
+    command: diff /tmp/test.txt /tmp/test.txt 
+    register: diff_result
+    ignore_errors: true
+    changed_when: false
 
-- name: Set changed status based on diff result
-  debug:
-    msg: >
-      {% if diff_result.rc == 0 %}
-        The files are identical.
-      {% else %}
-        The files are different.
-      {% endif %}
-  changed_when: diff_result.rc == 1
+  - name: Set changed status based on diff result
+    debug:
+      msg: >
+        {% if diff_result.rc == 0 %}
+          The files are identical.
+        {% else %}
+          The files are different.
+        {% endif %}
+    changed_when: diff_result.rc == 1
+    
+  notify: Debug in handlers
