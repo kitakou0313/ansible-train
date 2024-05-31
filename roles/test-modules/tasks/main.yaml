@@ -11,4 +11,4 @@
       {% else %}
         The files are different.
       {% endif %}
-  changed_when: diff_result.rc != 0
+  changed_when: diff_result.rc == 1
