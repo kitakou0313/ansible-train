@@ -1,14 +1,8 @@
 - block:
   - name: Check differences between two files
-    shell: diff /tmp/test.txt /etc/ssh/sshd_config > /dev/null 2>&1
+    shell: diff /tmp/test.txt /etc/ssh/sshd_config  > /dev/null 2>&1
     register: diff_result
     ignore_errors: true
-    changed_when: false
-    no_log: true
-
-  - name: Changed based on diff
-    debug:
-      msg: "{{ diff_result}}"
     changed_when: diff_result.rc == 1
     failed_when: not ((diff_result.rc == 0) or (diff_result.rc == 1))
-    notify: Debug in handlers
+    no_log: true
