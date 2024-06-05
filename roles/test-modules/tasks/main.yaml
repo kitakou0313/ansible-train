@@ -1,8 +1,11 @@
 - block:
   - name: Check differences between two files
-    shell: diff /tmp/test.txt /etc/ssh/sshd_config  > /dev/null 2>&1
+    shell: diff /tmp/test.txt /etc/ssh/sshd_config
     register: diff_result
     ignore_errors: true
-    changed_when: diff_result.rc == 1
     failed_when: not ((diff_result.rc == 0) or (diff_result.rc == 1))
     no_log: true
+
+  - name: Set facts
+    set_facts:
+      res: "{{ diff_res == 1 }}"
