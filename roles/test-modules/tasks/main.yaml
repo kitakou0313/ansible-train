@@ -1,11 +1,9 @@
-- block:
-  - name: Check differences between two files
-    shell: diff /tmp/test.txt /etc/ssh/sshd_config
-    register: diff_result
-    ignore_errors: true
-    failed_when: not ((diff_result.rc == 0) or (diff_result.rc == 1))
-    no_log: true
+- name: Run when /tmp/test.txt exists
+  shell: 
+    cmd: echo 'Run when /tmp/test.txt exists'
+    removes: /tmp/test.txt
 
-  - name: Set facts
-    set_facts:
-      res: "{{ diff_res == 1 }}"
+- name: Run when /tmp/test.txt2 exists
+  shell:
+    cmd: echo 'Run when /tmp/test.txt2 exists'
+    removes: /tmp/test.txt2
