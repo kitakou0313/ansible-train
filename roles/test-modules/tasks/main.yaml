@@ -1,9 +1,9 @@
-- name: Run when /tmp/test.txt exists
+- name: Run when /tmp/test.txt does exists
   shell: 
     cmd: echo 'Run when /tmp/test.txt exists'
     removes: /tmp/test.txt
 
-- name: Run when /tmp/test.txt2 exists
+- name: Run when /tmp/test.txt2 does exists
   shell:
     cmd: echo 'Run when /tmp/test.txt2 exists'
     removes: /tmp/test.txt2
@@ -17,3 +17,8 @@
   shell:
     cmd: echo 'Run when /tmp/test.txt2 does not exists'
     creates: /tmp/test.txt2
+
+- name: Run when /tmp/test.txt2 exists
+  shell:
+    cmd: pwd
+    chdir: /tmp
