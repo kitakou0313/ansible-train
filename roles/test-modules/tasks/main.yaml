@@ -7,3 +7,13 @@
   shell:
     cmd: echo 'Run when /tmp/test.txt2 exists'
     removes: /tmp/test.txt2
+
+- name: Run when /tmp/test.txt exists
+  shell: 
+    cmd: echo 'Run when /tmp/test.txt does not exists'
+    creates: /tmp/test.txt
+
+- name: Run when /tmp/test.txt2 exists
+  shell:
+    cmd: echo 'Run when /tmp/test.txt2 does not exists'
+    creates: /tmp/test.txt2
