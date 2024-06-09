@@ -22,3 +22,8 @@
   shell:
     cmd: pwd
     chdir: /tmp
+
+- name: Get example.com
+  ansible.builtin.get_url:
+    url: http://example.com
+  register: get_res
