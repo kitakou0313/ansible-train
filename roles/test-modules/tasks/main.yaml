@@ -27,6 +27,6 @@
   ansible.builtin.uri:
     url: http://example.com
   register: get_res
-  until: get_res.status == "200"
+  status_code: [200]
   retries: 5
   force: true
