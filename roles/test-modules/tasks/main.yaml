@@ -1,32 +1,5 @@
-# - name: Run when /tmp/test.txt does exists
-#   shell: 
-#     cmd: echo 'Run when /tmp/test.txt exists'
-#     removes: /tmp/test.txt
-
-# - name: Run when /tmp/test.txt2 does exists
-#   shell:
-#     cmd: echo 'Run when /tmp/test.txt2 exists'
-#     removes: /tmp/test.txt2
-
-# - name: Run when /tmp/test.txt exists
-#   shell: 
-#     cmd: echo 'Run when /tmp/test.txt does not exists'
-#     creates: /tmp/test.txt
-
-# - name: Run when /tmp/test.txt2 exists
-#   shell:
-#     cmd: echo 'Run when /tmp/test.txt2 does not exists'
-#     creates: /tmp/test.txt2
-
-# - name: Run when /tmp/test.txt2 exists
-#   shell:
-#     cmd: pwd
-#     chdir: /tmp
-
-- name: Get example.com
-  ansible.builtin.uri:
-    url: http://example.com
-  register: get_res
-  status_code: [200]
-  retries: 5
-  force: true
+- name: Copy file with bk
+  ansible.builtin.copy:
+    backup: true
+    src: /tmp/test.txt
+    dest: /tmp/test.txt2
